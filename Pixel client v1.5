@@ -1,0 +1,336 @@
+// ==UserScript==
+// @name         Pixel client for bloxd.io
+// @namespace    http://tampermonkey.net
+// @version      1.0.0
+// @description  Closet cheat client for bloxd.io (Autoclicker, Auto-E, Fake Aim Assist, CPS Shower, Title)
+// @author       Mardal_
+// @match        https://*.bloxd.io/*
+// @icon         https://png.pngtree.com/png-clipart/20220918/original/pngtree-letter-p-icon-png-image_8622509.png
+// @grant        none
+// ==/UserScript==
+
+window.onerror = function() {
+    alert('there is a problem');
+};
+
+(() => {
+    'use strict';
+    
+    const panele = document.createElement('div');
+    panele.id = 'pixel-client-loading';
+    panele.style.position = 'fixed';
+    panele.style.top = '50%';
+    panele.style.left = '50%';
+    panele.style.transform = 'translate(-50%, -50%)';
+    panele.style.zIndex = '100000';
+    panele.style.backgroundColor = 'rgba(10,10,10,0.9)';
+    panele.style.color = 'white';
+    panele.style.padding = '15px';
+    panele.style.width = '100%';
+    panele.style.fontSize = '50px';
+    panele.style.height = '100%';
+    panele.style.border = '2px solid cyan';
+    panele.style.borderRadius = '8px';
+    panele.style.fontFamily = 'monospace';
+    panele.style.display = 'block';
+    panele.style.display = 'flex';
+    panele.style.justifyContent = 'center';
+    panele.style.alignItems = 'center';
+    panele.style.textAlign = 'center';
+    panele.innerHTML = 'Loading cheats...';
+    panele.style.textShadow = '5px 5px 10px white'
+    document.body.appendChild(panele);
+
+     setTimeout(() => {
+         panele.style.display = 'none'
+     }, 5000);
+    console.log('🟢 Pixel Client Loaded by Mardal_ 🟢');
+
+    let myButton = document.createElement('button');
+    myButton.innerHTML = 'Menu OFF';
+    myButton.style.position = 'fixed';
+    myButton.style.top = '20px';
+    myButton.style.left = '500px';
+    myButton.style.color = 'white';
+    myButton.style.zIndex = '10000';
+    myButton.style.padding = '10px';
+    myButton.style.cursor = 'pointer';
+    myButton.style.backgroundColor = 'red';
+    myButton.style.border = 'none';
+    myButton.style.borderRadius = '5px';
+    myButton.style.fontWeight = 'bold';
+    document.body.appendChild(myButton);
+
+     const panel = document.createElement('div');
+    panel.id = 'pixel-client-home';
+    panel.style.position = 'fixed';
+    panel.style.top = '70px';
+    panel.style.left = '500px';
+    panel.style.zIndex = '10000';
+    panel.style.backgroundColor = 'rgba(10,10,10,0.9)';
+    panel.style.color = 'white';
+    panel.style.padding = '15px';
+    panel.style.width = '220px';
+    panel.style.height = '420px';
+    panel.style.border = '2px solid cyan';
+    panel.style.borderRadius = '8px';
+    panel.style.fontFamily = 'monospace';
+    panel.style.display = 'none';
+    panel.innerHTML = 'Home - Subscribe to @cartoon-bloxd❤️';
+    document.body.appendChild(panel);
+
+     const panel3 = document.createElement('div');
+    panel3.id = 'pixel-movement';
+    panel3.style.position = 'fixed';
+    panel3.style.top = '70px';
+    panel3.style.left = '200px';
+    panel3.style.zIndex = '10000';
+    panel3.style.backgroundColor = 'rgba(10,10,10,0.9)';
+    panel3.style.color = 'white';
+    panel3.style.padding = '15px';
+    panel3.style.width = '220px';
+    panel3.style.height = '420px';
+    panel3.style.border = '2px solid cyan';
+    panel3.style.borderRadius = '8px';
+    panel3.style.fontFamily = 'monospace';
+    panel3.style.display = 'none';
+    panel3.innerHTML = 'Visuals';
+    document.body.appendChild(panel3);
+
+    const debug = (msg) => {
+    const hud = document.createElement('div');
+    hud.innerText = msg;
+
+    hud.style.position = 'fixed';
+    hud.style.top = '90%';
+    hud.style.left = '80%'
+    hud.style.transform = 'translate(-50%, -50%)';
+    hud.style.zIndex = '10000';
+    hud.style.backgroundColor = 'rgba(0,0,0,0.9)';
+    hud.style.color = 'cyan';
+    hud.style.fontSize = '35px';
+    hud.style.padding = '2px';
+    hud.style.borderRadius = '10px';
+    hud.style.border = '5px solid cyan';
+    hud.style.padding = '5px';
+    hud.style.textShadow = '2px 2px 4px cyan'
+    document.body.appendChild(hud);
+
+        hud.style.opacity = '0';
+        hud.style.transition = 'all 0.4s ease';
+
+    setTimeout(() => {
+        hud.style.opacity = '1';
+        hud.style.transform = 'translate(-50%, -50%)';
+    }, 10);
+
+    setTimeout(() => {
+        hud.style.opacity = '0';
+        hud.style.transform = 'translate(-50%, -50%)';
+    }, 3000);
+
+
+ setTimeout(() => {
+        hud.remove();
+    }, 3400);
+    }
+
+    const panel2 = document.createElement('div');
+    panel2.id = 'panel-combat';
+    panel2.style.position = 'fixed';
+    panel2.style.top = '47%';
+    panel2.style.left = '70%';
+    panel2.style.transform = 'translate(-50%, -50%)';
+    panel2.style.zIndex = '10000';
+    panel2.style.backgroundColor = 'rgba(10,10,10,0.9)';
+    panel2.style.color = 'white';
+    panel2.style.padding = '15px';
+    panel2.style.width = '220px';
+    panel2.style.height = '420px';
+    panel2.style.border = '2px solid cyan';
+    panel2.style.borderRadius = '8px';
+    panel2.style.fontFamily = 'monospace';
+    panel2.style.display = 'none';
+    panel2.innerHTML = 'Combat';
+    document.body.appendChild(panel2);
+
+    myButton.onclick = function() {
+        if (panel.style.display === 'none') {
+            debug('menu ON');
+            panel.style.display = 'block';
+            panel3.style.display = 'block';
+            panel2.style.display = 'block';
+            myButton.innerHTML = 'Menu ON';
+            myButton.style.backgroundColor = 'green';
+        } else {
+            debug('menu OFF');
+            panel.style.display = 'none';
+            panel2.style.display = 'none';
+            panel3.style.display = 'none';
+            myButton.innerHTML = 'Menu OFF';
+            myButton.style.backgroundColor = 'red';
+        }
+    };
+    function createMenuButton(text, parentPanel) {
+        let btn = document.createElement('button');
+        btn.innerHTML = text;
+
+        btn.style.width = '100%';
+        btn.style.backgroundColor = '#222';
+        btn.style.color = 'white';
+        btn.style.border = '1px solid cyan';
+        btn.style.padding = '10px';
+        btn.style.marginTop = '8px';
+        btn.style.cursor = 'pointer';
+        btn.style.borderRadius = '4px';
+        btn.style.transition = '0.3s';
+        parentPanel.appendChild(btn);
+        return btn;
+    }
+
+
+    let btncps = createMenuButton('CPS Shower : [OFF]', panel);
+    btncps.onclick = function() {
+        let isOn = btncps.innerHTML.includes('[OFF]');
+        btncps.innerHTML = isOn ? 'CPS Shower : [ON]' : 'CPS Shower : [OFF]';
+        btncps.style.backgroundColor = isOn ? 'green' : '#222';
+        debug(isOn ? 'autoclicker ON | Combat' : 'autoclicker OFF | Combat')
+    };
+
+    let btnaim = createMenuButton('Fake Aim Assist : [OFF]', panel);
+    btnaim.onclick = function() {
+        let isOn = btnaim.innerHTML.includes('[OFF]');
+        btnaim.innerHTML = isOn ? 'Fake Aim Assist : [ON]' : 'Fake Aim Assist : [OFF]';
+        btnaim.style.backgroundColor = isOn ? 'green' : '#222';
+        aimtext.style.display = isOn ? 'block' : 'none';
+        debug(isOn ? 'Custom aim ON | Visuals' : 'Custom aim OFF| Visuals');
+    };
+    let btnauto = createMenuButton('Autoclicker : [OFF]', panel2);
+    let clics = null;
+    btnauto.onclick = function() {
+        if (clics === null) {
+            clics = setInterval(() => {
+                let game = document.querySelector('canvas');
+                if (game) {
+                    const x = window.innerWidth / 2 + (Math.random() * 4-2);
+                    const y = window.innerHeight / 2;
+                    const opts = { bubbles: true, button: 0, clientX: x, clientY: y };
+
+                    game.dispatchEvent(new MouseEvent('mousedown', opts));
+                    game.dispatchEvent(new MouseEvent('mouseup', opts));
+                }
+            }, 33); // 30 CPS
+            debug('autoclicker ON | Combat');
+            btnauto.innerHTML = 'Autoclicker : [ON]';
+            btnauto.style.backgroundColor = 'green';
+        } else {
+            clearInterval(clics);
+            clics = null;
+            debug('autoclicker OFF | Combat');
+            btnauto.innerHTML = 'Autoclicker : [OFF]';
+            btnauto.style.backgroundColor = '#222';
+        }
+    };
+
+
+    let btnAutoE = createMenuButton('Auto-Loot [E] : [OFF]', panel2);
+    let eInterval = null;
+    btnAutoE.onclick = function() {
+        if (eInterval === null) {
+            eInterval = setInterval(() => {
+                const opts = { key: 'e', code: 'KeyE', keyCode: 69, bubbles: true };
+                document.dispatchEvent(new KeyboardEvent('keydown', opts));
+                document.dispatchEvent(new KeyboardEvent('keyup', opts));
+                 document.dispatchEvent(new KeyboardEvent('keydown', opts));
+
+            }, 25);// 40cps💀
+            btnAutoE.innerHTML = 'Auto-Loot [E] : [ON]';
+            btnAutoE.style.backgroundColor = 'green';
+            debug('AutoclcickerE ON | Combat');
+        } else {
+            clearInterval(eInterval);
+            eInterval = null;
+            debug('autoclicker OFF | Combat');
+            btnAutoE.innerHTML = 'Auto-Loot [E] : [OFF]';
+            btnAutoE.style.backgroundColor = '#222';
+        }
+    };
+
+
+    let titleBtn = createMenuButton('Pixel Title : [OFF]', panel3);
+    titleBtn.onclick = function() {
+        let isOn = titleBtn.innerHTML.includes('[OFF]');
+        titleBtn.innerHTML = isOn ? 'Pixel Title : [ON]' : 'Pixel Title : [OFF]';
+        titleBtn.style.backgroundColor = isOn ? 'green' : '#222';
+        text.style.display = isOn ? 'block' : 'none';
+        debug(isOn ? 'PixelTitle ON | Visuals' : 'Pixel title OFF | Visuals')
+    };
+
+
+    const text = document.createElement('div');
+    text.textContent = 'Pixel Client V1.5';
+    text.style.position = 'fixed';
+    text.style.top = '5%';
+    text.style.left = '55%';
+    text.style.transform = 'translate(-50%, -50%)';
+    text.style.zIndex = '9999';
+    text.style.color = 'cyan';
+    text.style.fontSize = '35px';
+    text.style.fontWeight = 'bold';
+    text.style.textShadow = '5px 5px 10px black';
+    text.style.pointerEvents = 'none';
+    text.style.display = 'none';
+    document.body.appendChild(text);
+
+    const aimtext = document.createElement('div');
+    aimtext.textContent = '+';
+    aimtext.style.position = 'fixed';
+    aimtext.style.top = '50%';
+    aimtext.style.left = '50%';
+    aimtext.style.transform = 'translate(-50%, -50%)';
+    aimtext.style.color = 'rgba(255, 0, 0, 0.7)';
+    aimtext.style.zIndex = '999999';
+    aimtext.style.fontSize = '45px';
+    aimtext.style.pointerEvents = 'none';
+    aimtext.style.display = 'none';
+    document.body.appendChild(aimtext);
+
+    const logo = document.createElement('img');
+    logo.src = 'https://png.pngtree.com/png-clipart/20220918/original/pngtree-letter-p-icon-png-image_8622509.png';
+    logo.style.position = 'fixed';
+    logo.style.left = '84%';
+    logo.style.top = '7%';
+    logo.style.width = '100px';
+    logo.style.height = '100px';
+    logo.style.transform = 'translate(-50%, -50%)';
+    logo.style.pointerEvents = 'none';
+    logo.style.display = 'block';
+    logo.style.zIndex = '1000000';
+    document.body.appendChild(logo);
+
+    const pixeltxt = document.createElement('div');
+    pixeltxt.innerText = 'ixel v1.5';
+    pixeltxt.style.position = 'fixed';
+    pixeltxt.style.top = '10%';
+    pixeltxt.style.left = '90%';
+    pixeltxt.style.transform = 'translate(-50%, -50%)'
+    pixeltxt.style.color = 'white';
+    pixeltxt.style.zIndex = '1000000';
+    pixeltxt.style.textShadow = '2px 2px 4px black';
+    pixeltxt.style.fontSize = '30px';
+    pixeltxt.style.display = 'block';
+    pixeltxt.style.pointerEvents = 'none';
+    document.body.appendChild(pixeltxt);
+
+     let Xbtn = createMenuButton('CLOSE', panel);
+    Xbtn.style.border = '1px solid red';
+    Xbtn.style.marginTop = '15px';
+    Xbtn.onclick = function() {
+        panel.style.display = 'none';
+        panel2.style.display = 'none';
+        panel3.style.display = 'none';
+        myButton.innerHTML = 'Menu OFF';
+        myButton.style.backgroundColor = 'red';
+        panel.appendChild(Xbtn);
+    };
+})();
